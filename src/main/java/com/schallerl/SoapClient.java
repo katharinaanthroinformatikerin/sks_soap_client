@@ -41,8 +41,8 @@ public class SoapClient
             ObjectFactory of = new ObjectFactory();
             marshaller.marshal(of.createMovies(array), System.out);
             System.out.println("\n--------------------");*/
-            JAXBElement<MovieArray> moviesparsed = (JAXBElement<MovieArray>) unmarshaller.unmarshal(new File(filename));
-            List<Movie> movies = moviesparsed.getValue().getItem();
+            JAXBElement<Movies> moviesparsed = (JAXBElement<Movies>) unmarshaller.unmarshal(new File(filename));
+            List<Movie> movies = moviesparsed.getValue().getMovie();
             movies.forEach(movie ->printMovie(movie));
 
             System.setProperty("com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
@@ -63,8 +63,8 @@ public class SoapClient
         MovieWebServiceService service = new MovieWebServiceService();
         MovieWebService port = service.getMovieWebServicePort();
 
-        MovieArray list = port.searchFilms(searchterm);
-        for (Movie movie : list.getItem()){
+        Movies movies = port.searchFilms(searchterm);
+        for (Movie movie : movies.getMovie()){
             printMovie(movie);
         }
     }

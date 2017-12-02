@@ -27,11 +27,11 @@ public interface MovieWebService {
      * 
      * @param searchFilms
      * @return
-     *     returns com.schallerl.generated.MovieArray
+     *     returns com.schallerl.generated.Movies
      */
     @WebMethod
     @WebResult(name = "movies", targetNamespace = "http://movie.schallerl.com/", partName = "movies")
-    public MovieArray searchFilms(
+    public Movies searchFilms(
         @WebParam(name = "searchFilms", targetNamespace = "http://movie.schallerl.com/", partName = "searchFilms")
         String searchFilms);
 
@@ -45,6 +45,6 @@ public interface MovieWebService {
     @WebResult(name = "importMoviesResponse", targetNamespace = "http://movie.schallerl.com/", partName = "importMoviesResponse")
     public String importMovies(
         @WebParam(name = "importMovies", targetNamespace = "http://movie.schallerl.com/", partName = "importMovies")
-        MovieArray importMovies);
+        Movies importMovies);
 
 }

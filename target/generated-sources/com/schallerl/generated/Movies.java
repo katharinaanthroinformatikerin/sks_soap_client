@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for movieArray complex type.
+ * <p>Java class for movies complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="movieArray">
+ * &lt;complexType name="movies">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="item" type="{http://movie.schallerl.com/}movie" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="movie" type="{http://movie.schallerl.com/}movie" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,27 +28,26 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "movieArray", propOrder = {
-    "item"
+@XmlType(name = "movies", propOrder = {
+    "movie"
 })
-public class MovieArray {
+public class Movies {
 
-    @XmlElement(nillable = true)
-    protected List<Movie> item;
+    protected List<Movie> movie;
 
     /**
-     * Gets the value of the item property.
+     * Gets the value of the movie property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the item property.
+     * This is why there is not a <CODE>set</CODE> method for the movie property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getItem().add(newItem);
+     *    getMovie().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +57,11 @@ public class MovieArray {
      * 
      * 
      */
-    public List<Movie> getItem() {
-        if (item == null) {
-            item = new ArrayList<Movie>();
+    public List<Movie> getMovie() {
+        if (movie == null) {
+            movie = new ArrayList<Movie>();
         }
-        return this.item;
+        return this.movie;
     }
 
 }

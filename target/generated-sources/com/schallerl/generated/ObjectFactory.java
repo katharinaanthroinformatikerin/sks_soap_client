@@ -55,11 +55,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MovieArray }
+     * Create an instance of {@link Movies }
      * 
      */
-    public MovieArray createMovieArray() {
-        return new MovieArray();
+    public Movies createMovies() {
+        return new Movies();
     }
 
     /**
@@ -106,21 +106,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MovieArray }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Movies }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://movie.schallerl.com/", name = "movies")
-    public JAXBElement<MovieArray> createMovies(MovieArray value) {
-        return new JAXBElement<MovieArray>(_Movies_QNAME, MovieArray.class, null, value);
+    public JAXBElement<Movies> createMovies(Movies value) {
+        return new JAXBElement<Movies>(_Movies_QNAME, Movies.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MovieArray }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Movies }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://movie.schallerl.com/", name = "importMovies")
-    public JAXBElement<MovieArray> createImportMovies(MovieArray value) {
-        return new JAXBElement<MovieArray>(_ImportMovies_QNAME, MovieArray.class, null, value);
+    public JAXBElement<Movies> createImportMovies(Movies value) {
+        return new JAXBElement<Movies>(_ImportMovies_QNAME, Movies.class, null, value);
     }
 
     /**
