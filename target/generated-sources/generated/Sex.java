@@ -1,5 +1,5 @@
 
-package com.schallerl.generated;
+package generated;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;

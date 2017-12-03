@@ -1,5 +1,5 @@
 
-package com.schallerl.generated;
+package generated;
 
 import java.util.ArrayList;
 import java.util.List;

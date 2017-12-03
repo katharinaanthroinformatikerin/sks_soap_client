@@ -1,5 +1,5 @@
 
-package com.schallerl.generated;
+package generated;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "MovieWebServiceService", targetNamespace = "http://movie.schallerl.com/", wsdlLocation = "http://localhost:8080/MovieServiceWebApp/MovieWebService?wsdl")
-public class MovieWebServiceService
+@WebServiceClient(name = "MovieWebService", targetNamespace = "http://movie.schallerl.com/", wsdlLocation = "http://localhost:8080/MovieServiceWebApp/MovieWebService?wsdl")
+public class MovieWebService_Service
     extends Service
 {
 
-    private final static URL MOVIEWEBSERVICESERVICE_WSDL_LOCATION;
-    private final static WebServiceException MOVIEWEBSERVICESERVICE_EXCEPTION;
-    private final static QName MOVIEWEBSERVICESERVICE_QNAME = new QName("http://movie.schallerl.com/", "MovieWebServiceService");
+    private final static URL MOVIEWEBSERVICE_WSDL_LOCATION;
+    private final static WebServiceException MOVIEWEBSERVICE_EXCEPTION;
+    private final static QName MOVIEWEBSERVICE_QNAME = new QName("http://movie.schallerl.com/", "MovieWebService");
 
     static {
         URL url = null;
@@ -34,31 +34,31 @@ public class MovieWebServiceService
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
-        MOVIEWEBSERVICESERVICE_WSDL_LOCATION = url;
-        MOVIEWEBSERVICESERVICE_EXCEPTION = e;
+        MOVIEWEBSERVICE_WSDL_LOCATION = url;
+        MOVIEWEBSERVICE_EXCEPTION = e;
     }
 
-    public MovieWebServiceService() {
-        super(__getWsdlLocation(), MOVIEWEBSERVICESERVICE_QNAME);
+    public MovieWebService_Service() {
+        super(__getWsdlLocation(), MOVIEWEBSERVICE_QNAME);
     }
 
-    public MovieWebServiceService(WebServiceFeature... features) {
-        super(__getWsdlLocation(), MOVIEWEBSERVICESERVICE_QNAME, features);
+    public MovieWebService_Service(WebServiceFeature... features) {
+        super(__getWsdlLocation(), MOVIEWEBSERVICE_QNAME, features);
     }
 
-    public MovieWebServiceService(URL wsdlLocation) {
-        super(wsdlLocation, MOVIEWEBSERVICESERVICE_QNAME);
+    public MovieWebService_Service(URL wsdlLocation) {
+        super(wsdlLocation, MOVIEWEBSERVICE_QNAME);
     }
 
-    public MovieWebServiceService(URL wsdlLocation, WebServiceFeature... features) {
-        super(wsdlLocation, MOVIEWEBSERVICESERVICE_QNAME, features);
+    public MovieWebService_Service(URL wsdlLocation, WebServiceFeature... features) {
+        super(wsdlLocation, MOVIEWEBSERVICE_QNAME, features);
     }
 
-    public MovieWebServiceService(URL wsdlLocation, QName serviceName) {
+    public MovieWebService_Service(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public MovieWebServiceService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
+    public MovieWebService_Service(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
         super(wsdlLocation, serviceName, features);
     }
 
@@ -85,10 +85,10 @@ public class MovieWebServiceService
     }
 
     private static URL __getWsdlLocation() {
-        if (MOVIEWEBSERVICESERVICE_EXCEPTION!= null) {
-            throw MOVIEWEBSERVICESERVICE_EXCEPTION;
+        if (MOVIEWEBSERVICE_EXCEPTION!= null) {
+            throw MOVIEWEBSERVICE_EXCEPTION;
         }
-        return MOVIEWEBSERVICESERVICE_WSDL_LOCATION;
+        return MOVIEWEBSERVICE_WSDL_LOCATION;
     }
 
 }

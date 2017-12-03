@@ -1,11 +1,12 @@
 package com.schallerl;
 
-import com.schallerl.generated.*;
+import generated.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,25 +30,19 @@ public class SoapClient
 
     private static void importMovies(String filename){
         try {
-            JAXBContext jaxbcontext = JAXBContext.newInstance(ObjectFactory.class);
+            JAXBContext jaxbcontext = JAXBContext.newInstance(Movies.class);
             Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
-            Marshaller marshaller = jaxbcontext.createMarshaller();
-            //List<Movie> movies = new ArrayList<>();
-            /*MovieArray array = new MovieArray();
-            Movie movie = new Movie();
-            movie.setId(1L);
-            movie.setTitle("testtitle");
-            array.getItem().add(movie);
-            ObjectFactory of = new ObjectFactory();
-            marshaller.marshal(of.createMovies(array), System.out);
-            System.out.println("\n--------------------");*/
-            JAXBElement<Movies> moviesparsed = (JAXBElement<Movies>) unmarshaller.unmarshal(new File(filename));
+
+            StreamSource source = new StreamSource(new File(filename));
+
+            //When unmarshalling, define "root"-class, for mapping the xml to the object, in our case: Movies.class.
+            JAXBElement<Movies> moviesparsed = (JAXBElement<Movies>) unmarshaller.unmarshal(source, Movies.class);
             List<Movie> movies = moviesparsed.getValue().getMovie();
             movies.forEach(movie ->printMovie(movie));
 
             System.setProperty("com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
 
-            MovieWebServiceService service = new MovieWebServiceService();
+            MovieWebService_Service service = new MovieWebService_Service();
             MovieWebService port = service.getMovieWebServicePort();
 
             port.importMovies(moviesparsed.getValue());
@@ -60,7 +55,7 @@ public class SoapClient
     private static void searchMovies(String searchterm) {
         System.setProperty("com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
 
-        MovieWebServiceService service = new MovieWebServiceService();
+        MovieWebService_Service service = new MovieWebService_Service();
         MovieWebService port = service.getMovieWebServicePort();
 
         Movies movies = port.searchFilms(searchterm);
