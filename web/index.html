@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studios</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        "use strict";
+
+        var STUDIO_RESOURCE_URL = "http://localhost:8080/MovieServiceWebApp/resources/studio";
+
+        $(document).ready(refresh);
+
+        function refresh(){
+            $.ajax({
+                url: STUDIO_RESOURCE_URL,
+                type: "GET",
+                dataType: "json",
+                success: function(studiosList){
+                    var html = "";
+                    studiosList.forEach(function(studio){
+                        html += "<li><a onclick='printStudio(" +
+                            studio.id + "," +
+                            "\"" + studio.name + "\"," +
+                            "\"" + studio.postcode + "\"," +
+                            "\"" + studio.countrycode +
+                            "\")'>" + studio.name + "</a></li>";
+                    });
+                    html = "<ul>" + html + "</ul>";
+                    $("#content").html(html);
+                }
+            });
+        }
+
+        function printStudio(studioid, studioname, studiopostcode, studiocountrycode){
+            var temp = "studioID: " + studioid +
+                "\nstudio name: " + studioname +
+                    "\npost code: " + studiopostcode +
+                    "\ncountry code: " + studiocountrycode;
+            alert(temp);
+        }
+
+    </script>
+</head>
+<body>
+<form>
+    <input type="button" value="Refresh" onclick="refresh();">
+</form>
+<div id="content"></div>
+</body>
+</html>
