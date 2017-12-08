@@ -19,7 +19,7 @@
                 success: function(studiosList){
                     var html = "";
                     studiosList.forEach(function(studio){
-                        html += "<li><a onclick='printStudio(" +
+                        html += "<li><a href='#' onclick='printStudio(" +
                             studio.id + "," +
                             "\"" + studio.name + "\"," +
                             "\"" + studio.postcode + "\"," +
