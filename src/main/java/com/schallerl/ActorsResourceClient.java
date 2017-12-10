@@ -4,6 +4,10 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ActorsResourceClient {
@@ -24,7 +28,15 @@ public class ActorsResourceClient {
         System.out.print("\nEnter sex (FEMALE, MALE):");
         Sex sex = Sex.valueOf(sc.nextLine());
         System.out.print("\nEnter date of birth (YYYY-MM-DD): ");
-        String dateofbirth = sc.nextLine();
+        String inputBirthdate = sc.nextLine();
+        //converting birthdate to LocalDate
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthdate = null;
+        try {
+            birthdate = formatter.parse(inputBirthdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         //post dataset:
         Response response = target
@@ -34,7 +46,7 @@ public class ActorsResourceClient {
                                 lastname,
                                 firstname,
                                 sex,
-                                dateofbirth)));
+                                birthdate)));
         System.out.println(response.getLocation());
     }
 }
