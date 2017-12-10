@@ -14,6 +14,7 @@ import java.util.List;
 public class SoapClient
 {
     public static void main(String[] args) {
+        System.setProperty( "com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
 
         if(args.length != 2){
             System.out.println("Usage: SoapClient search|import searchterm|importfile");
