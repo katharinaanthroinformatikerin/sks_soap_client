@@ -16,6 +16,9 @@
                 url: STUDIO_RESOURCE_URL,
                 type: "GET",
                 dataType: "json",
+                headers: {
+                    Authorization: "Basic " + btoa("myuser:topsecret")
+                },
                 success: function(studiosList){
                     var html = "";
                     studiosList.forEach(function(studio){

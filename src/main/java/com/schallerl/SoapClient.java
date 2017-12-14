@@ -16,10 +16,12 @@ public class SoapClient
     public static void main(String[] args) {
         System.setProperty( "com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
 
-        if(args.length != 2){
-            System.out.println("Usage: SoapClient search|import searchterm|importfile");
+        if(args.length != 4){
+            System.out.println("Usage: SoapClient search|import searchterm|importfile username password");
             return;
         }
+
+        PasswordAuthenticator.install(args[2], args[3]);
 
         if (args[0].equals("search")) {
             searchMovies(args[1]);

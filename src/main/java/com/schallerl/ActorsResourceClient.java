@@ -12,8 +12,11 @@ import java.util.Scanner;
 
 public class ActorsResourceClient {
     public static void main(String[] args) {
-        //usage of args: as parameters when starting the app
-        //args[0] = firstname, args[1] = lastname, args[2]= sex, args[3] = dateofbirth
+
+        if(args.length != 2){
+            System.out.println("Usage: username password");
+            return;
+        }
 
         WebTarget target = ClientBuilder
                 .newClient()
@@ -40,6 +43,7 @@ public class ActorsResourceClient {
 
         //post dataset:
         Response response = target
+                .register(new RequestFilter(args[0], args[1]))
                 .request()
                 .post(Entity.json(
                         new Actor(
@@ -47,7 +51,7 @@ public class ActorsResourceClient {
                                 firstname,
                                 sex,
                                 birthdate)));
-        System.out.println(response.getLocation());
+        System.out.println("Returned location: " + response.getLocation());
     }
 }
 
