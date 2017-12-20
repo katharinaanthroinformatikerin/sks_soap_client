@@ -51,7 +51,11 @@ public class ActorsResourceClient {
                                 firstname,
                                 sex,
                                 birthdate)));
-        System.out.println("Returned location: " + response.getLocation());
+        if(response.getLocation()!=null) {
+            System.out.println("Actor angelegt: " + response.getLocation());
+        } else {
+            System.out.println("Konnte Actor nicht anlegen; fehlende Rechte?");
+        }
     }
 }
 

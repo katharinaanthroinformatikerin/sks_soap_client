@@ -36,6 +36,10 @@ public class StudiosResourceClient {
                                 studioname,
                                 postcode,
                                 countrycode)));
-        System.out.println(response.getLocation());
+        if(response.getLocation()!=null) {
+            System.out.println("Studio angelegt unter: " + response.getLocation());
+        } else {
+            System.out.println("Studio konnte nicht angelegt werden; fehlende Rechte?");
+        }
     }
 }

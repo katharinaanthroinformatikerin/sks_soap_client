@@ -36,19 +36,24 @@ public class SoapClient
             JAXBContext jaxbcontext = JAXBContext.newInstance(Movies.class);
             Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
 
+            System.out.println("Datei " + filename + " lesen...");
             StreamSource source = new StreamSource(new File(filename));
 
             //When unmarshalling, define "root"-class, for mapping the xml to the object, in our case: Movies.class.
             JAXBElement<Movies> moviesparsed = (JAXBElement<Movies>) unmarshaller.unmarshal(source, Movies.class);
             List<Movie> movies = moviesparsed.getValue().getMovie();
             movies.forEach(movie ->printMovie(movie));
-
+            System.out.println("Import startet...");
             System.setProperty("com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
 
             MovieWebService_Service service = new MovieWebService_Service();
             MovieWebService port = service.getMovieWebServicePort();
-
-            port.importMovies(moviesparsed.getValue());
+            try {
+                port.importMovies(moviesparsed.getValue());
+                System.out.println("Movie(s) erfolgreich importiert.");
+            }catch(Exception e) {
+                System.err.println("Fehler beim MovieImport: " + e.getMessage());
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
